@@ -1,28 +1,28 @@
-//$ RETURN TYPE
+//$ UNKNOWN TYPE
 
-//? the return type of the add function is inferred by TS to be a number
+let userInput: unknown;
+let userName: string;
 
-function add(n1: number, n2: number) {
-  return n1 + n2;
-}
-
-//? In case of this function the return type would be void because the function is not actually returning any value, its just printing something in to the console. this type is assigned by inferrence
-
-function printResult(num: number) {
-  console.log("Result: " + num);
-}
-
-printResult(add(5, 6));
-
-//$ FUNCTIONS AS TYPES
-
-let combineValues: (a: number, b: number) => number;
-//*adding a description on the type of values the function can recive as arguments, this would prevent the posibility of passing a function that does not work the way we want for example wihtout the arrow function (let combinedValues: Function) would be acceptable but this would accept any function wich wouldnt have much sense
-
-combineValues = add;
+userInput = 3;
+userInput = "Gama";
 
 /*
-combineValues = printResult; //! we get an error because this function does not use the arguments specified in the combineValues declaration
+userName = user;  //! we get an error because even though the las assignment of userinput is a string, unknown type does not assure that you will allways get a string son it crashes with the userName declaration. NOTE if you put type any instead of unknown it would overdrive any validation wich is not good
+
 */
 
-console.log(combineValues(8, 8));
+if (typeof userInput === "string") {
+  userName = userInput;
+}
+
+//? so unknown can be assigned to avariable wich we dont know its value yet but can still be validated wich doesnt happen with any
+
+//$ NEVER TYPE
+
+//? we assign the never type explicitly to tell the code that this function should NEVER return anything so you tel the code to stop or crash if it does wich doesnt happen with void type
+
+function generateError(message: string, code: number): never {
+  throw {message: message, errorCode: code};
+}
+
+generateError("An error has ocurred", 500);
