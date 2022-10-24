@@ -1,0 +1,9 @@
+{
+  "[markdown]": {
+    "diffEditor.wordWrap": "on"
+  },
+  "editor.wordWrap": "on",
+  "diffEditor.wordWrap": "on",
+  "editor.codeActionsOnSave": {},
+  "editor.accessibilitySupport": "off"
+}
